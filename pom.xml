@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sk89q</groupId>
+	<artifactId>chtag</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>CHTag</name>
+	<description>An extension to CommandHelper providing nametag support through TagAPI</description>
+	<repositories>
+		<repository>
+			<id>sk89q-mvn2</id>
+			<url>http://mvn2.sk89q.com/repo</url>
+		</repository>
+		<repository>
+			<id>zml2008</id>
+			<url>http://files.zachsthings.com/repo/</url>
+		</repository>
+		<repository>
+			<id>bukkit-repo</id>
+			<url>http://repo.bukkit.org/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>bukkit-maven</id>
+			<url>http://repo.bukkit.org/content/repositories/releases/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>kitteh-org</id>
+			<url>http://repo.kitteh.org/content/repositories/public/</url>
+		</repository>
+		<repository>
+			<id>maven-central</id>
+			<url>http://repo1.maven.org/maven2/</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>com.sk89q</groupId>
+			<artifactId>commandhelper</artifactId>
+			<version>3.3.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kitteh</groupId>
+			<artifactId>tagapi</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+	</build>
+</project>
