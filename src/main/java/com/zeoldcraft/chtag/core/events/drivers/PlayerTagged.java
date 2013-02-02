@@ -78,8 +78,7 @@ public class PlayerTagged {
 		}
 
 		public Driver driver() {
-			// TODO Auto-generated method stub
-			return null;
+			return Driver.EXTERNAL;
 		}
 
 		public boolean modifyEvent(String key, Construct value,
