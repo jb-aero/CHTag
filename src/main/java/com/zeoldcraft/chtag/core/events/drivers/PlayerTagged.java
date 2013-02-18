@@ -78,7 +78,7 @@ public class PlayerTagged {
 		}
 
 		public Driver driver() {
-			return Driver.EXTERNAL;
+			return Driver.EXTENSION;
 		}
 
 		public boolean modifyEvent(String key, Construct value,

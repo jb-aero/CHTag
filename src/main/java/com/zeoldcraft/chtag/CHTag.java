@@ -13,7 +13,7 @@ public class CHTag {
 		CommandHelperPlugin chp = CommandHelperPlugin.self;
 		try {
 			Static.checkPlugin("TagAPI", Target.UNKNOWN);
-			chp.registerEvent(new TagListener(chp));
+			new TagListener(chp);
 		} catch (ConfigRuntimeException ex) {
 			chp.getLogger().warning("TagAPI not found, CHTag features not enabled!");
 		}

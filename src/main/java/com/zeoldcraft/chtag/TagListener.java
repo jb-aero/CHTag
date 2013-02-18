@@ -22,6 +22,6 @@ public class TagListener implements Listener {
 	@EventHandler
 	public void onNameTag(PlayerReceiveNameTagEvent event) {
 		BukkitPluginEvents.TagAPIReceiveTagEvent rte = new BukkitPluginEvents.TagAPIReceiveTagEvent(event);
-		EventUtils.TriggerListener(Driver.EXTERNAL, "player_tagged", rte);
+		EventUtils.TriggerListener(Driver.EXTENSION, "player_tagged", rte);
 	}
 }
