@@ -9,7 +9,7 @@ import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 public class CHTag {
 	
 	@startup
-	public void setup() {
+	public static void setup() {
 		CommandHelperPlugin chp = CommandHelperPlugin.self;
 		try {
 			Static.checkPlugin("TagAPI", Target.UNKNOWN);
