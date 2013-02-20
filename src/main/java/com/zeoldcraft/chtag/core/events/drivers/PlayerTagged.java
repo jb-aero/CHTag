@@ -6,12 +6,15 @@ import java.util.Map;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.constructs.CArray;
+import com.laytonsmith.core.constructs.CBoolean;
 import com.laytonsmith.core.constructs.CString;
 import com.laytonsmith.core.constructs.Construct;
 import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.events.AbstractEvent;
 import com.laytonsmith.core.events.BindableEvent;
 import com.laytonsmith.core.events.Driver;
+import com.laytonsmith.core.events.Prefilters;
+import com.laytonsmith.core.events.Prefilters.PrefilterType;
 import com.laytonsmith.core.exceptions.EventException;
 import com.laytonsmith.core.exceptions.PrefilterNonMatchException;
 import com.zeoldcraft.chtag.abstraction.events.ReceiveTagEvent;
@@ -30,30 +33,23 @@ public class PlayerTagged {
 		}
 
 		public String docs() {
-			return "{player: <string match> | tagged: <string match>} "
-					+ "This event is called when a player (and their name tag) comes into view of another, "
-					+ "but only if you have TagAPI installed. It is worth noting that the players see each "
-					+ "other at the same time, but an event is fired for each. "
-					+ "{player: The player recieving the name tag | tagged: The player whose tag is being received | "
-					+ "tag: the tag that is currently being received} "
-					+ "{tag} "
-					+ "{player | tagged | tag}";
+			return "{player: <macro> | tagged: <macro>}"
+					+ " This event is called when a player (and their name tag) comes into view of another,"
+					+ " but only if you have TagAPI installed."
+					+ " {player: The player recieving the name tag | tagged: The player whose tag is being received"
+					+ " | tag: the tag that is currently being received | modified: if the tag has already been changed}"
+					+ " {tag}"
+					+ " {player | tagged | tag}";
 		}
 
 		public boolean matches(Map<String, Construct> prefilter, BindableEvent event)
 				throws PrefilterNonMatchException {
 			if (event instanceof ReceiveTagEvent) {
 				ReceiveTagEvent e = (ReceiveTagEvent) event;
-				if (prefilter.containsKey("player")) {
-					if (!e.getReceivingPlayer().getName().equals(prefilter.get("player").val())) {
-						return false;
-					}
-				}
-				if (prefilter.containsKey("tagged")) {
-					if (!e.getReceivedPlayer().getName().equals(prefilter.get("tagged").val())) {
-						return false;
-					}
-				}
+				
+				Prefilters.match(prefilter, "player", e.getReceivingPlayer().getName(), PrefilterType.MACRO);
+				Prefilters.match(prefilter, "tagged", e.getReceivedPlayer().getName(), PrefilterType.MACRO);
+				
 				return true;
 			}
 			return false;
@@ -73,6 +69,8 @@ public class PlayerTagged {
 			ret.put("tagged", new CString(e.getReceivedPlayer().getName(), Target.UNKNOWN));
 			
 			ret.put("tag", new CString(e.getTag(), Target.UNKNOWN));
+			
+			ret.put("modified", new CBoolean(e.isModified(), Target.UNKNOWN));
 			
 			return ret;
 		}

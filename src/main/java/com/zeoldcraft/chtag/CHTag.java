@@ -6,6 +6,10 @@ import com.laytonsmith.core.Static;
 import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 
+/**
+ * 
+ * @author jb_aero
+ */
 public class CHTag {
 	
 	@startup

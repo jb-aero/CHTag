@@ -12,7 +12,7 @@ import com.zeoldcraft.chtag.abstraction.events.ReceiveTagEvent;
  * 
  * @author jb_aero
  */
-public class BukkitPluginEvents {
+public class BukkitTagEvents {
 
 	@abstraction(type = Implementation.Type.BUKKIT)
 	public static class TagAPIReceiveTagEvent implements ReceiveTagEvent {
@@ -40,6 +40,10 @@ public class BukkitPluginEvents {
 
 		public boolean setTag(String tag) {
 			return event.setTag(tag);
+		}
+
+		public boolean isModified() {
+			return event.isModified();
 		}
 		
 	}
