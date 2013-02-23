@@ -19,6 +19,10 @@ public class TagListener implements Listener {
 		chp.registerEvent(this);
 	}
 	
+	public void unregister() {
+		PlayerReceiveNameTagEvent.getHandlerList().unregister(this);
+	}
+	
 	@EventHandler
 	public void onNameTag(PlayerReceiveNameTagEvent event) {
 		BukkitTagEvents.TagAPIReceiveTagEvent rte = new BukkitTagEvents.TagAPIReceiveTagEvent(event);

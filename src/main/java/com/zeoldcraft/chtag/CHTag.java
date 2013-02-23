@@ -1,5 +1,6 @@
 package com.zeoldcraft.chtag;
 
+import com.laytonsmith.annotations.shutdown;
 import com.laytonsmith.annotations.startup;
 import com.laytonsmith.commandhelper.CommandHelperPlugin;
 import com.laytonsmith.core.Static;
@@ -12,14 +13,22 @@ import com.laytonsmith.core.exceptions.ConfigRuntimeException;
  */
 public class CHTag {
 	
+	public static CommandHelperPlugin chp;
+	public static TagListener tagl;
+	
 	@startup
 	public static void setup() {
-		CommandHelperPlugin chp = CommandHelperPlugin.self;
+		chp = CommandHelperPlugin.self;
 		try {
 			Static.checkPlugin("TagAPI", Target.UNKNOWN);
-			new TagListener(chp);
+			tagl = new TagListener(chp);
 		} catch (ConfigRuntimeException ex) {
 			chp.getLogger().warning("TagAPI not found, CHTag features not enabled!");
 		}
+	}
+	
+	@shutdown
+	public static void unload() {
+		tagl.unregister();
 	}
 }
