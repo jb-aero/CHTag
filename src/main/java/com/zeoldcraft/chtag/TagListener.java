@@ -2,7 +2,7 @@ package com.zeoldcraft.chtag;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.kitteh.tag.PlayerReceiveNameTagEvent;
+import org.kitteh.tag.AsyncPlayerReceiveNameTagEvent;
 
 import com.laytonsmith.commandhelper.CommandHelperPlugin;
 import com.laytonsmith.core.events.Driver;
@@ -20,11 +20,11 @@ public class TagListener implements Listener {
 	}
 	
 	public void unregister() {
-		PlayerReceiveNameTagEvent.getHandlerList().unregister(this);
+		AsyncPlayerReceiveNameTagEvent.getHandlerList().unregister(this);
 	}
 	
 	@EventHandler
-	public void onNameTag(PlayerReceiveNameTagEvent event) {
+	public void onNameTag(AsyncPlayerReceiveNameTagEvent event) {
 		BukkitTagEvents.TagAPIReceiveTagEvent rte = new BukkitTagEvents.TagAPIReceiveTagEvent(event);
 		EventUtils.TriggerListener(Driver.EXTENSION, "player_tagged", rte);
 	}
