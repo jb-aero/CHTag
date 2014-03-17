@@ -1,6 +1,6 @@
 package com.zeoldcraft.chtag.abstraction.bukkit.events;
 
-import org.kitteh.tag.PlayerReceiveNameTagEvent;
+import org.kitteh.tag.AsyncPlayerReceiveNameTagEvent;
 
 import com.laytonsmith.abstraction.Implementation;
 import com.laytonsmith.abstraction.MCPlayer;
@@ -17,8 +17,8 @@ public class BukkitTagEvents {
 	@abstraction(type = Implementation.Type.BUKKIT)
 	public static class TagAPIReceiveTagEvent implements ReceiveTagEvent {
 
-		PlayerReceiveNameTagEvent event;
-		public TagAPIReceiveTagEvent(PlayerReceiveNameTagEvent te) {
+		AsyncPlayerReceiveNameTagEvent event;
+		public TagAPIReceiveTagEvent(AsyncPlayerReceiveNameTagEvent te) {
 			this.event = te;
 		}
 		
@@ -43,7 +43,7 @@ public class BukkitTagEvents {
 		}
 
 		public boolean isModified() {
-			return event.isModified();
+			return event.isTagModified();
 		}
 		
 	}
