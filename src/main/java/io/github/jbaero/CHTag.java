@@ -1,23 +1,24 @@
-package com.zeoldcraft.chtag;
+package io.github.jbaero;
 
-import com.laytonsmith.annotations.shutdown;
-import com.laytonsmith.annotations.startup;
+import com.laytonsmith.PureUtilities.SimpleVersion;
+import com.laytonsmith.PureUtilities.Version;
 import com.laytonsmith.commandhelper.CommandHelperPlugin;
 import com.laytonsmith.core.Static;
 import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
+import com.laytonsmith.core.extensions.AbstractExtension;
 
 /**
  * 
  * @author jb_aero
  */
-public class CHTag {
-	
-	public static CommandHelperPlugin chp;
-	public static TagListener tagl;
-	
-	@startup
-	public static void setup() {
+public class CHTag extends AbstractExtension {
+
+	public CommandHelperPlugin chp;
+	public TagListener tagl;
+
+	@Override
+	public void onStartup() {
 		chp = CommandHelperPlugin.self;
 		try {
 			Static.checkPlugin("TagAPI", Target.UNKNOWN);
@@ -26,9 +27,13 @@ public class CHTag {
 			chp.getLogger().warning("TagAPI not found, CHTag features not enabled!");
 		}
 	}
-	
-	@shutdown
-	public static void unload() {
+
+	@Override
+	public void onShutdown() {
 		tagl.unregister();
+	}
+
+	public Version getVersion() {
+		return new SimpleVersion(1, 0, 1);
 	}
 }

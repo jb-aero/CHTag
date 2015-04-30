@@ -1,4 +1,5 @@
 *.class
+*.iml
 
 # Package Files #
 *.jar
@@ -10,3 +11,4 @@
 /bin
 /target
 /.settings
+/.idea

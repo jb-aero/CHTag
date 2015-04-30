@@ -1,9 +1,7 @@
-package com.zeoldcraft.chtag.core.functions;
-
-import org.kitteh.tag.TagAPI;
+package io.github.jbaero.core.functions;
 
 import com.laytonsmith.abstraction.MCPlayer;
-import com.laytonsmith.abstraction.bukkit.BukkitMCPlayer;
+import com.laytonsmith.abstraction.bukkit.entities.BukkitMCPlayer;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.Static;
@@ -16,6 +14,7 @@ import com.laytonsmith.core.environments.Environment;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
 import com.laytonsmith.core.functions.Exceptions.ExceptionType;
+import org.kitteh.tag.TagAPI;
 
 /**
  * 
@@ -54,7 +53,7 @@ public class TagAPIPlugin {
 				MCPlayer p2;
 				if (args[1] instanceof CArray) {
 					for (int i = 0; i < ((CArray) args[1]).size(); i++) {
-						p2 = Static.GetPlayer(((CArray) args[1]).get(i).val(), t);
+						p2 = Static.GetPlayer(((CArray) args[1]).get(i, t).val(), t);
 						TagAPI.refreshPlayer(((BukkitMCPlayer) p1)._Player(), ((BukkitMCPlayer) p2)._Player());
 					}
 				} else {
@@ -64,7 +63,7 @@ public class TagAPIPlugin {
 			} else {
 				TagAPI.refreshPlayer(((BukkitMCPlayer) p1)._Player());
 			}
-			return new CVoid(t);
+			return CVoid.VOID;
 		}
 
 		public String getName() {

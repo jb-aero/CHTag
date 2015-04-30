@@ -1,7 +1,4 @@
-package com.zeoldcraft.chtag.core.events.drivers;
-
-import java.util.HashMap;
-import java.util.Map;
+package io.github.jbaero.core.events.drivers;
 
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
@@ -17,7 +14,10 @@ import com.laytonsmith.core.events.Prefilters;
 import com.laytonsmith.core.events.Prefilters.PrefilterType;
 import com.laytonsmith.core.exceptions.EventException;
 import com.laytonsmith.core.exceptions.PrefilterNonMatchException;
-import com.zeoldcraft.chtag.abstraction.events.ReceiveTagEvent;
+import io.github.jbaero.abstraction.events.ReceiveTagEvent;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 
@@ -55,7 +55,7 @@ public class PlayerTagged {
 			return false;
 		}
 
-		public BindableEvent convert(CArray manualObject) {
+		public BindableEvent convert(CArray manualObject, Target t) {
 			return null;
 		}
 
@@ -69,8 +69,8 @@ public class PlayerTagged {
 			ret.put("tagged", new CString(e.getReceivedPlayer().getName(), Target.UNKNOWN));
 			
 			ret.put("tag", new CString(e.getTag(), Target.UNKNOWN));
-			
-			ret.put("modified", new CBoolean(e.isModified(), Target.UNKNOWN));
+
+			ret.put("modified", CBoolean.get(e.isModified()));
 			
 			return ret;
 		}

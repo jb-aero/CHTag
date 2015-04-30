@@ -1,12 +1,11 @@
-package com.zeoldcraft.chtag.abstraction.bukkit.events;
-
-import org.kitteh.tag.AsyncPlayerReceiveNameTagEvent;
+package io.github.jbaero.abstraction.bukkit.events;
 
 import com.laytonsmith.abstraction.Implementation;
 import com.laytonsmith.abstraction.MCPlayer;
-import com.laytonsmith.abstraction.bukkit.BukkitMCPlayer;
+import com.laytonsmith.abstraction.bukkit.entities.BukkitMCPlayer;
 import com.laytonsmith.annotations.abstraction;
-import com.zeoldcraft.chtag.abstraction.events.ReceiveTagEvent;
+import io.github.jbaero.abstraction.events.ReceiveTagEvent;
+import org.kitteh.tag.AsyncPlayerReceiveNameTagEvent;
 
 /**
  * 
