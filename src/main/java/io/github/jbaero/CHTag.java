@@ -7,11 +7,12 @@ import com.laytonsmith.core.Static;
 import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.extensions.AbstractExtension;
-
+import com.laytonsmith.core.extensions.MSExtension;
 /**
  * 
  * @author jb_aero
  */
+@MSExtension("CHTag")
 public class CHTag extends AbstractExtension {
 
 	public CommandHelperPlugin chp;
