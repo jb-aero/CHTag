@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.jbaero</groupId>
 	<artifactId>chtag</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<name>CHTag</name>
 	<description>An extension to CommandHelper providing nametag support through TagAPI</description>
 	<repositories>
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>com.sk89q</groupId>
 			<artifactId>commandhelper</artifactId>
-			<version>3.3.1-SNAPSHOT</version>
+			<version>3.3.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kitteh</groupId>

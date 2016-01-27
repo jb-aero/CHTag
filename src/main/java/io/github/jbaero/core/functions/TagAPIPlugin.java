@@ -11,9 +11,11 @@ import com.laytonsmith.core.constructs.Construct;
 import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.environments.CommandHelperEnvironment;
 import com.laytonsmith.core.environments.Environment;
+import com.laytonsmith.core.exceptions.CRE.CREInvalidPluginException;
+import com.laytonsmith.core.exceptions.CRE.CREPlayerOfflineException;
+import com.laytonsmith.core.exceptions.CRE.CREThrowable;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
-import com.laytonsmith.core.functions.Exceptions.ExceptionType;
 import org.kitteh.tag.TagAPI;
 
 /**
@@ -29,8 +31,8 @@ public class TagAPIPlugin {
 	@api(environments={CommandHelperEnvironment.class})
 	public static class tag_refresh extends AbstractFunction {
 
-		public ExceptionType[] thrown() {
-			return new ExceptionType[]{ExceptionType.PlayerOfflineException, ExceptionType.InvalidPluginException};
+		public Class<? extends CREThrowable>[] thrown() {
+			return new Class[]{CREPlayerOfflineException.class, CREInvalidPluginException.class};
 		}
 
 		public boolean isRestricted() {
